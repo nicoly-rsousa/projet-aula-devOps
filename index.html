@@ -8,9 +8,24 @@
   <style>
     :root {
    
+      --bg-page: #eef4f1;
+      --bg-card: rgba(255, 255, 255, 0.78);
+      --bg-strong: #0f2f2a;
+      --bg-strong-2: #163d32;
+      --bg-strong-3: #1d4f3f;
+      --green-soft: #d7f1dc;S
+      --green-medium: #8ec5a2;
+      --green-deep: #214f38;
+      --green-deep-2: #183a2d;
+      --text-strong: #17211d;
+      --text-muted: #5e6e66;
+      --text-soft: #dbe8e1;
+      --border: rgba(19, 41, 33, 0.08);
+      --shadow-soft: 0 30px 80px rgba(18, 35, 28, 0.14);
+      color-scheme: light;
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      color: #17211d;
-      background: #f5f6f8;
+      color: var(--text-strong);
+      background: var(--bg-page);
       font-synthesis: none;
       text-rendering: optimizeLegibility;
       -webkit-font-smoothing: antialiased;
@@ -28,6 +43,10 @@
       display: grid;
       place-items: center;
       padding: 32px;
+      background:
+        radial-gradient(circle at top left, rgba(151, 221, 164, 0.25), transparent 22%),
+        radial-gradient(circle at bottom right, rgba(78, 123, 106, 0.2), transparent 20%),
+        linear-gradient(180deg, #f6f9f7 0%, var(--bg-page) 100%);
     }
 
     button,
@@ -39,12 +58,13 @@
       width: min(1120px, 100%);
       min-height: min(720px, calc(100vh - 64px));
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1.08fr 0.92fr;
       overflow: hidden;
-      background: #fff;
-      border: 1px solid #e8ebe9;
-      border-radius: 24px;
-      box-shadow: 0 24px 80px rgb(22 37 29 / 9%);
+      background: rgba(255, 255, 255, 0.8);
+      border: 1px solid var(--border);
+      border-radius: 30px;
+      box-shadow: var(--shadow-soft);
+      backdrop-filter: blur(12px);
     }
 
     .welcome {
@@ -56,8 +76,9 @@
       padding: 48px;
       color: #f7faf8;
       background:
-        radial-gradient(ellipse at 82% 18%, rgb(148 208 157 / 22%), transparent 34%),
-        linear-gradient(145deg, #163d32 0%, #102d26 58%, #0d2822 100%);
+        radial-gradient(ellipse at 80% 20%, rgba(149, 220, 178, 0.2), transparent 32%),
+        radial-gradient(circle at bottom right, rgba(183, 246, 197, 0.12), transparent 28%),
+        linear-gradient(145deg, var(--bg-strong-2) 0%, var(--bg-strong) 45%, var(--bg-strong-3) 100%);
     }
 
     .welcome::before,
@@ -99,6 +120,11 @@
       width: fit-content;
       color: inherit;
       text-decoration: none;
+      transition: transform 150ms ease;
+    }
+
+    .brand:hover {
+      transform: translateY(-1px);
     }
 
     .brand-mark {
@@ -106,9 +132,10 @@
       width: 36px;
       height: 36px;
       place-items: center;
-      border: 1px solid rgb(255 255 255 / 24%);
+      border: 1px solid rgba(255, 255, 255, 0.24);
       border-radius: 11px;
-      background: rgb(255 255 255 / 9%);
+      background: rgba(255, 255, 255, 0.09);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12);
     }
 
     .brand-name {
@@ -139,7 +166,7 @@
       height: 7px;
       border-radius: 50%;
       background: #a7e2ae;
-      box-shadow: 0 0 14px rgb(167 226 174 / 65%);
+      box-shadow: 0 0 14px rgba(167, 226, 174, 0.65);
       content: "";
     }
 
@@ -164,12 +191,48 @@
       line-height: 1.75;
     }
 
+    .welcome-metrics {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 30px;
+    }
+
+    .metric {
+      min-width: 120px;
+      padding: 14px 16px;
+      border: 1px solid rgba(214, 238, 221, 0.18);
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+    }
+
+    .metric strong {
+      display: block;
+      margin-bottom: 4px;
+      color: #f4faf5;
+      font-size: 18px;
+      letter-spacing: -0.65px;
+    }
+
+    .metric span {
+      color: #bfd3c7;
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
     .welcome-footer {
       display: flex;
       align-items: center;
       gap: 11px;
       color: #bad0c2;
       font-size: 12px;
+      padding: 12px 14px;
+      border: 1px solid rgba(211, 227, 218, 0.12);
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.04);
+      width: fit-content;
     }
 
     .avatar-stack {
@@ -203,10 +266,12 @@
       display: grid;
       place-items: center;
       padding: 56px;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.82), rgba(246, 250, 248, 0.96));
     }
 
     .login-content {
       width: min(100%, 370px);
+      padding: 12px 0;
     }
 
     .mobile-brand {
@@ -247,13 +312,14 @@
       width: 100%;
       height: 49px;
       padding: 0 14px;
-      border: 1px solid #dfe4e0;
-      border-radius: 9px;
+      border: 1px solid #dfe6e2;
+      border-radius: 12px;
       outline: none;
-      color: #17211d;
-      background: #fff;
+      color: var(--text-strong);
+      background: rgba(255, 255, 255, 0.82);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.7);
       font-size: 14px;
-      transition: border-color 150ms ease, box-shadow 150ms ease;
+      transition: border-color 150ms ease, box-shadow 150ms ease, transform 150ms ease;
     }
 
     .field input::placeholder {
@@ -262,7 +328,8 @@
 
     .field input:focus {
       border-color: #3d7458;
-      box-shadow: 0 0 0 3px rgb(61 116 88 / 12%);
+      box-shadow: 0 0 0 4px rgba(61, 116, 88, 0.12), 0 10px 24px rgba(35, 78, 55, 0.06);
+      transform: translateY(-1px);
     }
 
     .password-input {
@@ -326,18 +393,20 @@
       justify-content: center;
       gap: 10px;
       border: 0;
-      border-radius: 9px;
+      border-radius: 12px;
       color: #fff;
-      background: #214f38;
+      background: linear-gradient(135deg, #214f38 0%, #173d2f 100%);
+      box-shadow: 0 16px 26px rgba(33, 79, 56, 0.2);
       cursor: pointer;
       font-size: 14px;
       font-weight: 650;
-      transition: background 150ms ease, transform 150ms ease;
+      transition: transform 150ms ease, box-shadow 150ms ease, filter 150ms ease;
     }
 
     .submit-button:hover {
-      transform: translateY(-1px);
-      background: #193f2d;
+      transform: translateY(-2px);
+      box-shadow: 0 18px 30px rgba(33, 79, 56, 0.26);
+      filter: brightness(1.02);
     }
 
     .submit-button:focus-visible,
@@ -482,6 +551,21 @@
         <p class="eyebrow">Trabalho em harmonia</p>
         <h1>Boas ideias merecem um <span>bom fluxo.</span></h1>
         <p class="welcome-description">Organize seus projetos, aproxime seu time e transforme planos em entregas — tudo em um só lugar.</p>
+
+        <div class="welcome-metrics" aria-label="Estatísticas do fluxo">
+          <div class="metric">
+            <strong>12k+</strong>
+            <span>tarefas</span>
+          </div>
+          <div class="metric">
+            <strong>96%</strong>
+            <span>aprovação</span>
+          </div>
+          <div class="metric">
+            <strong>4.9/5</strong>
+            <span>tempo</span>
+          </div>
+        </div>
       </div>
 
       <div class="welcome-footer">
